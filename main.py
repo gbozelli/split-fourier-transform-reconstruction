@@ -9,7 +9,7 @@ x, sr = librosa.load("audio.wav", sr=None)
 X = np.fft.fft(x)
 
 # keep N largest coefficients
-N = 10000
+N = 100000
 idx = np.argsort(np.abs(X))[-N:]
 X_trunc = np.zeros_like(X)
 X_trunc[idx] = X[idx]
@@ -25,8 +25,8 @@ print('The wave was reconstructed with', N, 'biggest terms')
 
 import numpy as np
 
-m = 10
-N = 1000
+m = np.arange(0,1000,1)
+N = np.arange(0,1000,1)
 
 x_split = np.array_split(x, m)
 
